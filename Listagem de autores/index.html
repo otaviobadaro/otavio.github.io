@@ -3,88 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Correção de Resumos</title>
+    <title>Listagem de autores</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-        }
-        h2 {
-            color: #555;
-        }
-        ul {
-            list-style-type: none;
+            background-color: #2e2e2e;
+            color: #ccc;
+            margin: 0;
             padding: 0;
         }
-        li {
-            background-color: #fff;
-            margin: 5px 0;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+        .container {
+            display: flex;
         }
-        form {
-            background-color: #fff;
+        .sidebar {
+            background-color: #404040;
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            margin-top: 20px;
+            width: 250px;
+            height: 100vh;
         }
-        label {
+        .sidebar img {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+        .sidebar nav a {
+            color: #ccc;
+            text-decoration: none;
             display: block;
-            margin-bottom: 10px;
-            color: #333;
+            padding: 10px 0;
+            font-size: 18px;
         }
-        textarea {
-            width: 100%;
-            height: 100px;
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .header .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .header .user-info img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .header .user-info span {
+            font-size: 18px;
+        }
+        .filters {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .filters input {
             padding: 10px;
-            border: 1px solid #ddd;
+            margin-right: 10px;
+            border: 1px solid #ccc;
             border-radius: 5px;
-            margin-bottom: 10px;
+            background-color: #333;
+            color: #ccc;
         }
-        button {
+        .filters button {
+            background-color: #374149;
+            color: white;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        button:hover {
-            background-color: #0056b3;
+        .results {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #333;
+            color: #ccc;
+        }
+        table, th, td {
+            border: 1px solid #555;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #555;
+        }
+        .actions button {
+            background: none;
+            border: none;
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 5px;
+            font-size: 16px;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pagination button {
+            background-color: #1e272e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pagination .pages span {
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        .pagination .pages .active {
+            font-weight: bold;
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Correção de Resumos</h1>
-    <h2>Autores</h2>
-    <ul>
-        <li>Machado de Assis</li>
-        <li>Clarice Lispector</li>
-        <li>Graciliano Ramos</li>
-        <li>Jorge Amado</li>
-        <li>Monteiro Lobato</li>
-    </ul>
-    <h2>Envie seu Resumo para Correção</h2>
-    <form>
-        <label for="author">Autor</label>
-        <select id="author" name="author">
-            <option value="machado">Machado de Assis</option>
-            <option value="clarice">Clarice Lispector</option>
-            <option value="graciliano">Graciliano Ramos</option>
-            <option value="jorge">Jorge Amado</option>
-            <option value="monteiro">Monteiro Lobato</option>
-        </select>
-        
-        <label for="summary">Resumo</label>
-        <textarea id="summary" name="summary" required></textarea>
-        
-        <button type="submit">Enviar para Correção</button>
-    </form>
+    <div class="container">
+        <aside class="sidebar">
+            <img src="logo.png" alt="Logo SSR">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Agenda</a>
+                <a href="#">Relatórios</a>
+                <a href="#">Configurações</a>
+            </nav>
+        </aside>
+        <div class="main-content">
+            <div class="header">
+                <h1>Usuários</h1>
+                <div class="user-info">
+                    <img src="user.jpg" alt="User Photo">
+                    <span>Otávio Badaró</span>
+                </div>
+            </div>
+            <div class="filters">
+                <input type="text" placeholder="CPF / Username">
+                <input type="text" placeholder="Nº Trabalhos">
+                <input type="text" placeholder="Status">
+                <button>Pesquisar</button>
+                <button>Incluir Usuário</button>
+            </div>
+            <div class="results">
+                <table>
+                    <tr>
+                        <th>Ações</th>
+                        <th>CPF</th>
+                        <th>Nome de Usuário</th>
+                        <th>Email</th>
+                        <th>Nº de Trabalhos</th>
+                        <th>Ativo</th>
+                    </tr>
+                    <tr>
+                        <td class="actions">
+                            <button>⚙️</button>
+                            <button>✏️</button>
+                            <button>🗑️</button>
+                            <button>👁️</button>
+                        </td>
+                        <td>022.000.158-89</td>
+                        <td>João Fuluno</td>
+                        <td>fulanosilva@gmail.com</td>
+                        <td>158</td>
+                        <td><span style="color: lime;">●</span></td>
+                    </tr>
+                    <!-- Adicione mais linhas conforme necessário -->
+                </table>
+            </div>
+            <div class="pagination">
+                <button>Anterior</button>
+                <div class="pages">
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>...</span>
+                    <span>15</span>
+                </div>
+                <button>Próximo</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
